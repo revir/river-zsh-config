@@ -11,5 +11,4 @@ edit `.zshrc`, add:
 then `source ~/.zshrc`.
 
 # screenshot
-
-![screenshot](https://github.com/revir/FairyDict/raw/master/screenshot.png)
+![screenshot](https://github.com/revir/river-zsh-config/raw/master/screenshot.png)
