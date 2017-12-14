@@ -12,3 +12,4 @@ then `source ~/.zshrc`.
 
 # screenshot
 
+![screenshot](https://github.com/revir/FairyDict/raw/master/screenshot.png)
