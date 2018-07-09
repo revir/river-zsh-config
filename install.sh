@@ -33,7 +33,7 @@ if [ ! -d ~/.oh-my-zsh ]; then
 fi
 
 # git clone this project;
-if [[ $(basename "$DIR") -ne 'river-zsh-config' ]]; then 
+if [ "$(basename "$DIR")" != 'river-zsh-config' ]; then 
 	git clone https://github.com/revir/river-zsh-config.git || {
 		printf "Error: git clone of river-zsh-config failed."
 		exit 1
