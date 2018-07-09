@@ -32,6 +32,18 @@ if [ ! -d ~/.oh-my-zsh ]; then
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
+# git clone this project;
+if [[ $(basename "$DIR") -ne 'river-zsh-config' ]]; then 
+	git clone https://github.com/revir/river-zsh-config.git || {
+		printf "Error: git clone of river-zsh-config failed."
+		exit 1
+	}
+	cd river-zsh-config
+	DIR="$(pwd)"
+	echo $DIR
+fi
+
+
 if ! grep 'ZSH_THEME="river"' ~/.zshrc >/dev/null 2>&1; then
 	# setup .zshrc
 	if which brew >/dev/null 2>&1; then
