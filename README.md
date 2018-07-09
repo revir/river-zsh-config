@@ -2,12 +2,19 @@
 
 This is my custom zsh theme.
 
-# install	
+# autorun
+
+sh -c "$(curl -fsSL  https://github.com/revir/river-zsh-config/raw/master/install.sh)"
+
+** you need to run twice of this command. **
+** then `source ~/.zshrc`. **
+
+# manully install	
 	
 	1. run `./install.sh` to install oh-my-zsh. 
 	2. run again `./install.sh` to setup `~/.zshrc`;  
 
-# manully install
+# manully install 2
 
 edit `.zshrc`, add:
 
