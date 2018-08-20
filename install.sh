@@ -93,7 +93,9 @@ if ! grep 'zsh-syntax-highlighting' ~/.zshrc >/dev/null 2>&1; then
 		echo "setup zshrc plugins, use python node nvm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions ..."
 
 		# clever way to sed multiple lines: https://unix.stackexchange.com/questions/26284/how-can-i-use-sed-to-replace-a-multi-line-string
-		cat ~/.zshrc | tr '\n' '\r' | sed -e 's/\rplugins=(\r  /\rplugins=(\r  python node nvm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions /'  | tr '\r' '\n' > ~/.zshrc
+		# and don't cat & write to the same file at the same time!!!
+		cat ~/.zshrc | tr '\n' '\r' | sed -e 's/\rplugins=(\r  /\rplugins=(\r  python node nvm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions /'  | tr '\r' '\n' > ~/.zshrc.tmp
+		mv ~/.zshrc.tmp ~/.zshrc
 
 		echo "NOTICE: edited ~/.zshrc, remember to run source ~/.zshrc by yourself!"
 	else 
