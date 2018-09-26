@@ -6,8 +6,8 @@ This is my custom zsh theme.
 
     sh -c "$(curl -fsSL  https://github.com/revir/river-zsh-config/raw/master/install.sh)"
 
-** you need to run twice of this command. **
-** then `source ~/.zshrc`. **
+**you need to run twice of this command.** . 
+**then `source ~/.zshrc`.**
 
 # manully install	
 	
