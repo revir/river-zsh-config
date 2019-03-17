@@ -53,7 +53,7 @@ fi
 if [ ! -d $ZSH_CUSTOM ]; then 
 	echo "clone $ZSH_CUSTOM ..."
 	git clone https://github.com/revir/river-zsh-config.git $ZSH_CUSTOM || {
-		printf "Error: git clone of river-zsh-config failed."
+		printf "Error: git clone river-zsh-config failed."
 		exit 1
 	}
 fi
@@ -75,14 +75,17 @@ fi
 if ! grep 'ZSH_THEME="river"' ~/.zshrc >/dev/null 2>&1; then
 	# setup .zshrc
 	if which sed >/dev/null 2>&1; then
+		# backup .zshrc 
+		cp ~/.zshrc ~/.zshrc.bak
+
 		echo "setup ~/.zshrc, use my ZSH_CUSTOM and ZSH_THEME ..."
 		code="ZSH_CUSTOM=\"$ZSH_CUSTOM\""
-		sed -i "/ZSH_THEME=/i $code" ~/.zshrc
+		sed -i "/ZSH_THEME=\"robbyrussell\"/i $code" ~/.zshrc
 		sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="river"/' ~/.zshrc
 
 		echo "NOTICE: edited ~/.zshrc, remember to run source ~/.zshrc by yourself!"
 	else 
-		echo "WARN you dont have sed, can't setup .zshrc, you should setup it by yourself!"
+		echo "WARN: you dont have sed, can't setup .zshrc, you should setup it by yourself!"
 	fi
 fi
 
@@ -92,10 +95,13 @@ if ! grep 'zsh-syntax-highlighting' ~/.zshrc >/dev/null 2>&1; then
 	if which sed >/dev/null 2>&1; then
 		echo "setup zshrc plugins, use python node nvm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions ..."
 
-		# clever way to sed multiple lines: https://unix.stackexchange.com/questions/26284/how-can-i-use-sed-to-replace-a-multi-line-string
-		# and don't cat & write to the same file at the same time!!!
-		cat ~/.zshrc | tr '\n' '\r' | sed -e 's/\rplugins=(\r  /\rplugins=(\r  python node nvm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions /'  | tr '\r' '\n' > ~/.zshrc.tmp
-		mv ~/.zshrc.tmp ~/.zshrc
+		# deprecated, ohmyzsh used to be like that.
+		# # clever way to sed multiple lines: https://unix.stackexchange.com/questions/26284/how-can-i-use-sed-to-replace-a-multi-line-string
+		# # and don't cat & write to the same file at the same time!!!
+		# cat ~/.zshrc | tr '\n' '\r' | sed -e 's/\rplugins=(\r  /\rplugins=(\r  python node nvm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions /'  | tr '\r' '\n' > ~/.zshrc.tmp
+		# mv ~/.zshrc.tmp ~/.zshrc
+
+		sed -i 's/plugins=(git)/plugins=(git python node nvm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions)/' ~/.zshrc
 
 		echo "NOTICE: edited ~/.zshrc, remember to run source ~/.zshrc by yourself!"
 	else 
