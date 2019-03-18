@@ -4,6 +4,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 ZSH_CUSTOM=~/river-zsh-config
+CPWD=`pwd`
 
 sysinstall() 
 {
@@ -56,6 +57,10 @@ if [ ! -d $ZSH_CUSTOM ]; then
 		printf "Error: git clone river-zsh-config failed."
 		exit 1
 	}
+else
+	cd $ZSH_CUSTOM
+	git pull 
+	cd $CPWD
 fi
 
 # install zsh-syntax-highlighting
@@ -112,5 +117,5 @@ fi
 # 加入home end，以及小键盘的支持
 if ! grep ':key-binds-for-home-end-and-others' ~/.zshrc >/dev/null 2>&1; then
 	echo "Add some key-binds for home, end and other keys."
-	cat ./key-binds.sh >> ~/.zshrc
+	cat ${ZSH_CUSTOM}/key-binds.sh >> ~/.zshrc
 fi
