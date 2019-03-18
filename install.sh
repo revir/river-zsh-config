@@ -109,3 +109,8 @@ if ! grep 'zsh-syntax-highlighting' ~/.zshrc >/dev/null 2>&1; then
 	fi
 fi
 
+# 加入home end，以及小键盘的支持
+if ! grep ':key-binds-for-home-end-and-others' ~/.zshrc >/dev/null 2>&1; then
+	echo "Add some key-binds for home, end and other keys."
+	cat ./key-binds.sh >> ~/.zshrc
+fi
