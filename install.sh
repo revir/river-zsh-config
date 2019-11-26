@@ -6,7 +6,7 @@ fi
 ZSH_CUSTOM=~/river-zsh-config
 CPWD=`pwd`
 
-sysinstall() 
+sysinstall()
 {
 	if ! which $1 >/dev/null 2>&1; then
 		echo "install $1 ..."
@@ -27,7 +27,7 @@ sysinstall()
 			$useroot yum -y install $1
 		fi
 	fi
-} 
+}
 
 # install zsh
 sysinstall zsh
@@ -51,7 +51,7 @@ if [ ! -d ~/.oh-my-zsh ]; then
 fi
 
 # git clone this project;
-if [ ! -d $ZSH_CUSTOM ]; then 
+if [ ! -d $ZSH_CUSTOM ]; then
 	echo "clone $ZSH_CUSTOM ..."
 	git clone https://github.com/revir/river-zsh-config.git $ZSH_CUSTOM || {
 		printf "Error: git clone river-zsh-config failed."
@@ -59,7 +59,7 @@ if [ ! -d $ZSH_CUSTOM ]; then
 	}
 else
 	cd $ZSH_CUSTOM
-	git pull 
+	git pull
 	cd $CPWD
 fi
 
@@ -70,7 +70,7 @@ if [ ! -d ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting ]; then
 fi
 
 # install zsh-autosuggestions
-if [ ! -d ${ZSH_CUSTOM}/plugins/zsh-autosuggestions ]; then 
+if [ ! -d ${ZSH_CUSTOM}/plugins/zsh-autosuggestions ]; then
 	echo "clone zsh-autosuggestions..."
 	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 fi
@@ -80,7 +80,7 @@ fi
 if ! grep 'ZSH_THEME="river"' ~/.zshrc >/dev/null 2>&1; then
 	# setup .zshrc
 	if which sed >/dev/null 2>&1; then
-		# backup .zshrc 
+		# backup .zshrc
 		cp ~/.zshrc ~/.zshrc.bak
 
 		echo "setup ~/.zshrc, use my ZSH_CUSTOM and ZSH_THEME ..."
@@ -89,7 +89,7 @@ if ! grep 'ZSH_THEME="river"' ~/.zshrc >/dev/null 2>&1; then
 		sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="river"/' ~/.zshrc
 
 		echo "NOTICE: edited ~/.zshrc, remember to run source ~/.zshrc by yourself!"
-	else 
+	else
 		echo "WARN: you dont have sed, can't setup .zshrc, you should setup it by yourself!"
 	fi
 fi
@@ -106,10 +106,10 @@ if ! grep 'zsh-syntax-highlighting' ~/.zshrc >/dev/null 2>&1; then
 		# cat ~/.zshrc | tr '\n' '\r' | sed -e 's/\rplugins=(\r  /\rplugins=(\r  python node nvm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions /'  | tr '\r' '\n' > ~/.zshrc.tmp
 		# mv ~/.zshrc.tmp ~/.zshrc
 
-		sed -i 's/plugins=(git)/plugins=(git python node nvm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions)/' ~/.zshrc
+		sed -i 's/plugins=(git)/plugins=(git python node nvm npm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions)/' ~/.zshrc
 
 		echo "NOTICE: edited ~/.zshrc, remember to run source ~/.zshrc by yourself!"
-	else 
+	else
 		echo "WARN you dont have sed, can't setup .zshrc, you should setup it by yourself!"
 	fi
 fi

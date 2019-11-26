@@ -1,4 +1,4 @@
-
+﻿
 
 
 # 加入home end，以及小键盘的支持 :key-binds-for-home-end-and-others
@@ -21,24 +21,24 @@ bindkey "\e[F" end-of-line
 # completion in the middle of a line
 bindkey '^i' expand-or-complete-prefix
 
-# Fix numeric keypad  
-# 0 . Enter  
+# Fix numeric keypad
+# 0 . Enter
 bindkey -s "^[Op" "0"
 bindkey -s "^[On" "."
 bindkey -s "^[OM" "^M"
-# 1 2 3  
+# 1 2 3
 bindkey -s "^[Oq" "1"
 bindkey -s "^[Or" "2"
 bindkey -s "^[Os" "3"
-# 4 5 6  
+# 4 5 6
 bindkey -s "^[Ot" "4"
 bindkey -s "^[Ou" "5"
 bindkey -s "^[Ov" "6"
-# 7 8 9  
+# 7 8 9
 bindkey -s "^[Ow" "7"
 bindkey -s "^[Ox" "8"
 bindkey -s "^[Oy" "9"
-# + - * /  
+# + - * /
 bindkey -s "^[Ol" "+"
 bindkey -s "^[Om" "-"
 bindkey -s "^[Oj" "*"
