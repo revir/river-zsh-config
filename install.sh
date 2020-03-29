@@ -106,7 +106,7 @@ if ! grep 'zsh-syntax-highlighting' ~/.zshrc >/dev/null 2>&1; then
 		# cat ~/.zshrc | tr '\n' '\r' | sed -e 's/\rplugins=(\r  /\rplugins=(\r  python node nvm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions /'  | tr '\r' '\n' > ~/.zshrc.tmp
 		# mv ~/.zshrc.tmp ~/.zshrc
 
-		sed -i 's/plugins=(git)/plugins=(git python node nvm npm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions)/' ~/.zshrc
+		sed -i 's/plugins=(git)/plugins=(git python node nvm npm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions tmux)/' ~/.zshrc
 
 		echo "NOTICE: edited ~/.zshrc, remember to run source ~/.zshrc by yourself!"
 	else
