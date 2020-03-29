@@ -29,10 +29,9 @@ sysinstall()
 	fi
 }
 
-# install zsh
 sysinstall zsh
-# install git
 sysinstall git
+sysinstall tmux
 
 # install sed on mac
 if which brew >/dev/null 2>&1; then
@@ -118,4 +117,9 @@ fi
 if ! grep ':key-binds-for-home-end-and-others' ~/.zshrc >/dev/null 2>&1; then
 	echo "Add some key-binds for home, end and other keys."
 	cat ${ZSH_CUSTOM}/key-binds.sh >> ~/.zshrc
+fi
+
+if [ ! -f $HOME/.tmux.conf ]; then 
+	cp .tmux.conf ~/
+	echo "Add .tmux.conf for home."
 fi
