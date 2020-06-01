@@ -1,9 +1,9 @@
-﻿
-
-
+﻿#
+#
+#
 # 加入home end，以及小键盘的支持 :key-binds-for-home-end-and-others
-
-# key bindings
+#
+# key bindings:
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
 bindkey "\e[5~" beginning-of-history
