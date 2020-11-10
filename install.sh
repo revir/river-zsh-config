@@ -33,6 +33,9 @@ sysinstall zsh
 sysinstall git
 sysinstall tmux
 
+if which dnf >/dev/null 2>&1; then
+	$useroot dnf install util-linux-user   # which provides chsh
+fi
 # install sed on mac
 if which brew >/dev/null 2>&1; then
 	if ! which gsed >/dev/null 2>&1; then
@@ -115,10 +118,8 @@ fi
 
 # 加入home end，以及小键盘的支持
 if ! grep ':key-binds-for-home-end-and-others' ~/.zshrc >/dev/null 2>&1; then
-	if ! grep 'key-binds.sh' ~/.zshrc >/dev/null 2>&1; then
-		echo "Add some key-binds for home, end and other keys."
-		echo "source ${ZSH_CUSTOM}/key-binds.sh" >> ~/.zshrc
-	fi 
+	echo "Add some key-binds for home, end and other keys."
+	cat ${ZSH_CUSTOM}/key-binds.sh >> ~/.zshrc
 fi
 
 if [ ! -f $HOME/.tmux.conf ]; then 

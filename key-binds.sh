@@ -1,7 +1,5 @@
-﻿#
 #
-#
-# 加入home end，以及小键盘的支持 :key-binds-for-home-end-and-others
+# :key-binds-for-home-end-and-others
 #
 # key bindings:
 bindkey "\e[1~" beginning-of-line
