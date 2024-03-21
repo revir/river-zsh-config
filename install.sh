@@ -41,7 +41,10 @@ if which brew >/dev/null 2>&1; then
 	if ! which gsed >/dev/null 2>&1; then
 		echo "install gnu-sed..."
 		brew install gnu-sed
-		sed=gsed
+		alias sed=gsed
+	else 
+		echo "use gnu-sed"
+		alias sed=gsed
 	fi
 fi
 
