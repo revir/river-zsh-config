@@ -12,7 +12,7 @@ sysinstall()
 		echo "install $1 ..."
 
 		if which brew >/dev/null 2>&1; then
-			$useroot brew install $1
+			brew install $1
 		fi
 		if which apt >/dev/null 2>&1; then
 			$useroot apt install $1
@@ -40,7 +40,7 @@ fi
 if which brew >/dev/null 2>&1; then
 	if ! which gsed >/dev/null 2>&1; then
 		echo "install gnu-sed..."
-		$useroot brew install gnu-sed
+		brew install gnu-sed
 		sed=gsed
 	fi
 fi
