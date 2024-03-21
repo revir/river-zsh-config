@@ -129,3 +129,13 @@ if [ ! -f $HOME/.vimrc ]; then
 	cp ${ZSH_CUSTOM}/.vimrc ~/
 	echo "Add .vimrc for home."
 fi
+
+
+# change soft limits on MacOS
+if which brew >/dev/null 2>&1; then
+	if ! grep "MacOS Soft rlimits too low" ~/.zshrc >/dev/null 2>&1; then
+		echo "Change soft rlimits."
+		echo "# MacOS Soft rlimits too low. Number of files is 256, should be at least 1000" >> ~/.zshrc
+		echo "ulimit -n 4096" >> ~/.zshrc
+	fi
+fi
